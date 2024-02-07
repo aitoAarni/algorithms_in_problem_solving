@@ -1,5 +1,6 @@
 #include <iostream>
-
+#define nl "\n"
+typedef long long ll;
 using namespace std;
 
 int main() {
