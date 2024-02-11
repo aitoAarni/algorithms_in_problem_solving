@@ -10,7 +10,7 @@ long long factorials[1000001];
 int unique_towers(int height, int blocks, int prev_pos = 0, int factorial = 1){
     if (blocks == 0) {
 
-        int n = (height - prev_pos < 2) ? factorial : pow(2, height - prev_pos) * factorial;
+        int n = (height - prev_pos < 2) ? factorial : pow(pow(2, height - prev_pos-1),2) * factorial;
         cout << "blocks: " << blocks << "  prev_pos: " << prev_pos << nl;
         cout << "factorial before: " << factorial << nl;
         cout << "factorial after: " << n << nl;
@@ -22,7 +22,7 @@ int unique_towers(int height, int blocks, int prev_pos = 0, int factorial = 1){
     for (int i = prev_pos + 1 ; i <= height - blocks + 1; i++) {
         cout << "blocks: " << blocks << "  block position: " << i << nl;
         cout << "factorial before: " << factorial << nl;
-        int rest = (i-prev_pos < 3) ? 1 : pow(2, i-prev_pos-1);
+        int rest = (i-prev_pos < 3) ? 1 : pow(pow(2, i-prev_pos-2),2);
         cout << "(i-prev_pos < 3) ? 1 : pow(2, i-prev_pos-1:  " << rest << nl;
         ll new_factorial = factorial * rest;
         cout << "new_factorial: " << new_factorial << nl;
@@ -63,7 +63,7 @@ int recursive_function(int tower_current_height, int block_places, int horizonta
 
 
 int main() {
-    cout << unique_towers(4, 2) << nl;
+    cout << unique_towers(2, 1) << nl;
 
     /* factorials[0] = 1;
     int n = 15;
